@@ -15,12 +15,12 @@ public class IntercomUtil {
         try {
 
             String response = Unirest.post("https://api.intercom.io/contacts/search")
-                .header("Authorization", "Bearer " + token)
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .body(params)
-                .asString()
-                .getBody();
+                    .header("Authorization", "Bearer " + token)
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .body(params)
+                    .asString()
+                    .getBody();
 
             GetContactResponse intercomResponse = new ObjectMapper().readValue(response, GetContactResponse.class);
             return intercomResponse;
@@ -37,12 +37,30 @@ public class IntercomUtil {
         try {
 
             String response = Unirest.post("https://api.intercom.io/contacts")
-                .header("Authorization", "Bearer " + token)
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .body(params)
-                .asString()
-                .getBody();
+                    .header("Authorization", "Bearer " + token)
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .body(params)
+                    .asString()
+                    .getBody();
+
+            CreateContactResponse intercomResponse = new ObjectMapper().readValue(response, CreateContactResponse.class);
+            return intercomResponse;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static CreateContactResponse updateContact(CreateContactResponse body, String token) {
+        try {
+            String response = Unirest.put("https://api.intercom.io/contacts/" + body.getId())
+                    .header("Authorization", "Bearer " + token)
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .body(body)
+                    .asString()
+                    .getBody();
 
             CreateContactResponse intercomResponse = new ObjectMapper().readValue(response, CreateContactResponse.class);
             return intercomResponse;
