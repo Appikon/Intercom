@@ -52,7 +52,7 @@ public class IntercomUtil {
         return null;
     }
 
-    public static CreateContactResponse updateContact(CreateContactResponse body, String token) {
+    public static CreateContactResponse updateContact(Datum body, String token) {
         try {
             String response = Unirest.put("https://api.intercom.io/contacts/" + body.getId())
                     .header("Authorization", "Bearer " + token)
