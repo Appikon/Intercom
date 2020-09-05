@@ -1,6 +1,8 @@
 package com.appikon.intercom;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kong.unirest.JacksonObjectMapper;
 import kong.unirest.Unirest;
 import org.json.JSONObject;
 
@@ -54,7 +56,9 @@ public class IntercomUtil {
 
     public static CreateContactResponse updateContact(Datum body, String token) {
         try {
+//            Unirest.config().setObjectMapper(new ObjectMapper());
             String response = Unirest.put("https://api.intercom.io/contacts/" + body.getId())
+                    .withObjectMapper(new JacksonObjectMapper())
                     .header("Authorization", "Bearer " + token)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
