@@ -1,61 +1,57 @@
 
 package com.appikon.intercom;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "type",
-    "id",
-    "workspace_id",
-    "external_id",
-    "role",
-    "email",
-    "phone",
-    "name",
-    "avatar",
-    "owner_id",
-    "social_profiles",
-    "has_hard_bounced",
-    "marked_email_as_spam",
-    "unsubscribed_from_emails",
-    "created_at",
-    "updated_at",
-    "signed_up_at",
-    "last_seen_at",
-    "last_replied_at",
-    "last_contacted_at",
-    "last_email_opened_at",
-    "last_email_clicked_at",
-    "language_override",
-    "browser",
-    "browser_version",
-    "browser_language",
-    "os",
-    "location",
-    "android_app_name",
-    "android_app_version",
-    "android_device",
-    "android_os_version",
-    "android_sdk_version",
-    "android_last_seen_at",
-    "ios_app_name",
-    "ios_app_version",
-    "ios_device",
-    "ios_os_version",
-    "ios_sdk_version",
-    "ios_last_seen_at",
-    "custom_attributes",
-    "tags",
-    "notes",
-    "companies"
+        "type",
+        "id",
+        "workspace_id",
+        "external_id",
+        "role",
+        "email",
+        "phone",
+        "name",
+        "avatar",
+        "owner_id",
+        "social_profiles",
+        "has_hard_bounced",
+        "marked_email_as_spam",
+        "unsubscribed_from_emails",
+        "created_at",
+        "updated_at",
+        "signed_up_at",
+        "last_seen_at",
+        "last_replied_at",
+        "last_contacted_at",
+        "last_email_opened_at",
+        "last_email_clicked_at",
+        "language_override",
+        "browser",
+        "browser_version",
+        "browser_language",
+        "os",
+        "location",
+        "android_app_name",
+        "android_app_version",
+        "android_device",
+        "android_os_version",
+        "android_sdk_version",
+        "android_last_seen_at",
+        "ios_app_name",
+        "ios_app_version",
+        "ios_device",
+        "ios_os_version",
+        "ios_sdk_version",
+        "ios_last_seen_at",
+        "custom_attributes",
+        "tags",
+        "notes",
+        "companies"
 })
 public class CreateContactResponse {
 
@@ -140,7 +136,7 @@ public class CreateContactResponse {
     @JsonProperty("ios_last_seen_at")
     private Object iosLastSeenAt;
     @JsonProperty("custom_attributes")
-    private HashMap customAttributes;
+    private Map<String, Object> customAttributes;
     @JsonProperty("tags")
     private Tags tags;
     @JsonProperty("notes")
@@ -551,12 +547,12 @@ public class CreateContactResponse {
     }
 
     @JsonProperty("custom_attributes")
-    public HashMap getCustomAttributes() {
+    public Map<String, Object> getCustomAttributes() {
         return customAttributes;
     }
 
     @JsonProperty("custom_attributes")
-    public void setCustomAttributes(HashMap customAttributes) {
+    public void setCustomAttributes(Map<String, Object> customAttributes) {
         this.customAttributes = customAttributes;
     }
 
