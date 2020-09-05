@@ -56,9 +56,8 @@ public class IntercomUtil {
 
     public static CreateContactResponse updateContact(Datum body, String token) {
         try {
-//            Unirest.config().setObjectMapper(new ObjectMapper());
+            Unirest.config().setObjectMapper(new JacksonObjectMapper());
             String response = Unirest.put("https://api.intercom.io/contacts/" + body.getId())
-                    .withObjectMapper(new JacksonObjectMapper())
                     .header("Authorization", "Bearer " + token)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
