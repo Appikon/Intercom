@@ -140,7 +140,7 @@ public class CreateContactResponse {
     @JsonProperty("ios_last_seen_at")
     private Object iosLastSeenAt;
     @JsonProperty("custom_attributes")
-    private CustomAttributes customAttributes;
+    private HashMap customAttributes;
     @JsonProperty("tags")
     private Tags tags;
     @JsonProperty("notes")
@@ -551,12 +551,12 @@ public class CreateContactResponse {
     }
 
     @JsonProperty("custom_attributes")
-    public CustomAttributes getCustomAttributes() {
+    public HashMap getCustomAttributes() {
         return customAttributes;
     }
 
     @JsonProperty("custom_attributes")
-    public void setCustomAttributes(CustomAttributes customAttributes) {
+    public void setCustomAttributes(HashMap customAttributes) {
         this.customAttributes = customAttributes;
     }
 
